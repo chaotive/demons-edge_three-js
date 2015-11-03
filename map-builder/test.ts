@@ -14,6 +14,8 @@ class Point {
             this.y * this.y);
     }
 }
+
+// Sample code
 var p = new Point(3, 4);
 var dist = p.getDst();
 alert("Hypotenuse is: " + dist);
