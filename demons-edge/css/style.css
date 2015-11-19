@@ -1,0 +1,11 @@
+#loading, #play {
+    width: 854px;
+    height: 480px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#play, #game {
+    display: none;
+}

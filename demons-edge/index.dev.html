@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demon's Edge</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/fullscreen.css">
+</head>
+<body onload="init()">
+
+<script src="js/lib/jquery-1.10.2.min.js"></script>
+<script src="js/lib/phaser.js"></script>
+
+<script src="js/lib/coffee-script.js"></script>
+<script src="modules/CHAOTIVE/APP/worksheet.coffee" type="text/coffeescript"></script>
+<script src="modules/CHAOTIVE/APP/fullscreen.coffee" type="text/coffeescript"></script>
+<script src="modules/L3/DEMONSEDGE/DemonsEdge.coffee" type="text/coffeescript"></script>
+
+<script src="js/static.js"></script>
+<script src="js/main.dev.js"></script>
+
+<div id="main">
+    <div id="loading">Loading...</div>
+    <div id="play">
+        <button onclick="game()">Play</button>
+        <!-- <button onclick="APP.fullscreen.enter();game()">Play (Fullscreen)</button> -->
+    </div>
+    <div id="game"></div>
+</div>
+
+<!-- <button onclick="APP.fullscreen.enter()">Fullscreen</button> -->
+<button onclick="init()">Reset</button>
+
+</body>
+</html>
