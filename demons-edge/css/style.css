@@ -1,5 +1,5 @@
-#loading, #play {
-    width: 854px;
+#loading, #play, #game {
+    width: 840px;
     height: 480px;
     text-align: center;
     display: table-cell;
