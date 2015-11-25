@@ -28,14 +28,24 @@ class Room {
         return ($this->x + $this->width < $map->width) && ($this->y + $this->height < $map->height);
     }
 
-    public function findNearestVertical($rooms) {
-        $near = null;
+    public function findNearestRoom($rooms) {
+        $near = 66666666;
+        $nearRoom = null;
 
         foreach ($rooms as $troom) {
-            if ($troom->x == $this->x && $troom->y == $this->y) continue;
+            $tx = $troom->x + $troom->width / 2;
+            $ty = $troom->y + $troom->height / 2;
+            $rx = $room->x + $room->width / 2;
+            $ry = $room->y + $room->height / 2;
+            $d = sqrt(($tx - $rx) * ($tx - $rx) + ($ty - $ry) * ($ty - $ry));
 
-            
+            if ($d < $near) {
+                $near = $d;
+                $nearRoom = $troom;
+            }
         }
+
+        return $troom;
     }
 }
 
