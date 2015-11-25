@@ -1,4 +1,4 @@
-class L3.DEMONSEDGE.GAME.Grid
+class Grid
   cellWidth: 60
   cellHeight: 60
 
@@ -8,3 +8,6 @@ class L3.DEMONSEDGE.GAME.Grid
 
   getX: (col) -> col * @cellWidth
   getY: (row) -> row * @cellHeight
+
+root = exports ? window
+root.Grid = Grid

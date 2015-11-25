@@ -1,6 +1,12 @@
 chai = require 'chai'
 chai.should()
 
+L3 = {
+  DEMONSEDGE: {
+    GAME: {}
+  }
+};
+
 {Grid} = require '../modules/L3/DEMONSEDGE/GAME/Grid'
 
 describe 'Grid instance', ->
