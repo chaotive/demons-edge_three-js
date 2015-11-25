@@ -5,6 +5,8 @@ class L3.DEMONSEDGE.DemonsEdge
 
   preload: () ->
     @game.load.image('sample1', 'resources/img/test/sample1.png');
+    @game.load.image('enemy1', 'resources/img/test/enemy1.png');
 
   create: () ->
     @game.add.sprite(0, 0, 'sample1');
+    @game.add.sprite(60, 0, 'enemy1');
