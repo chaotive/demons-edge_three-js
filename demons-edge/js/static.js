@@ -9,7 +9,9 @@ var CHAOTIVE = {
     }
 };
 var L3 = {
-    DEMONSEDGE: {}
+    DEMONSEDGE: {
+        GAME: {}
+    }
 };
 
 //ALIASES
@@ -19,12 +21,11 @@ var DE = L3.DEMONSEDGE;
 //MAIN FUNCTIONS
 function init() {
     try {
-        console.log("Game started...")
-        play()
-    }
-    catch(err) {
+        console.log("Attempting game start...");
+        game();
+    } catch(err) {
         console.log("Still loading: " + err.message);
-        setTimeout(init, 200, stageNum);
+        setTimeout(init, 200);
     }
 }
 
@@ -36,7 +37,8 @@ function play() {
 }
 
 function game() {
-    $("#play").slideUp();
-    $("#game").slideDown();
     APP.game = new L3.DEMONSEDGE.DemonsEdge();
+    //$("#play").slideUp();
+    $("#loading").slideUp();
+    $("#game").slideDown();
 }
