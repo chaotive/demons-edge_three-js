@@ -9,7 +9,9 @@ var CHAOTIVE = {
     }
 };
 var L3 = {
-    DEMONSEDGE: {}
+    DEMONSEDGE: {
+        GAME: {}
+    }
 };
 
 //ALIASES
