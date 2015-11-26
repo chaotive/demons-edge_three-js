@@ -1,4 +1,7 @@
 <?php
+
+/**
+ */
 namespace Lib;
 
 class Room {
@@ -15,14 +18,34 @@ class Room {
     }
 
     public function intersects($room) {
-        if (($this->x <= $room->x + $room->width && $this->x + $this->width >= $room->x) &&
-            ($this->y <= $room->y + $room->height && $this->y + $this->height >= $room->y)) {
+        if (($this->x <= $room->x + $room->width + 1 && $this->x + $this->width + 1 >= $room->x) &&
+            ($this->y <= $room->y + $room->height + 1 && $this->y + $this->height + 1 >= $room->y)) {
             return true;
         }
     }
 
     public function inside($map) {
-        return ($this->x + $this->width <= $map->width) && ($this->y + $this->height <= $map->height);
+        return ($this->x + $this->width < $map->width) && ($this->y + $this->height < $map->height);
+    }
+
+    public function findNearestRoom($rooms) {
+        $near = 66666666;
+        $nearRoom = null;
+
+        foreach ($rooms as $troom) {
+            $tx = $troom->x + $troom->width / 2;
+            $ty = $troom->y + $troom->height / 2;
+            $rx = $room->x + $room->width / 2;
+            $ry = $room->y + $room->height / 2;
+            $d = sqrt(($tx - $rx) * ($tx - $rx) + ($ty - $ry) * ($ty - $ry));
+
+            if ($d < $near) {
+                $near = $d;
+                $nearRoom = $troom;
+            }
+        }
+
+        return $troom;
     }
 }
 
@@ -38,6 +61,11 @@ class Map {
     }
 
     public function generate($nRooms) {
+        $this->generateRooms($nRooms);
+        //$this->generateCorridors($nRooms);
+    }
+
+    public function generateRooms($nRooms) {
         // Create main rooms
         for ($i = 0; $i < $nRooms; ++$i) {
             $ok = true;
@@ -63,6 +91,20 @@ class Map {
                 --$i;
             }
         }
+    }
+
+    public function generateCorridors($nRooms) {
+        /* for ($i = 0; $i < $nRooms; $i++) {
+            $room = $this->rooms[$i];
+
+            for ($j = $i + 1; $j < $nRooms; $j++) {
+                $room2 = $room->findNearestVertical();
+
+            }
+        } */
+        $room2 = $room->findNearestVertical($this->rooms);
+        $corridor = new Room($room->x + $room->width / 2, $room->y + $room->height / 2, 3, 10);
+        $this->rooms[] = $corridor;
     }
 }
 /*

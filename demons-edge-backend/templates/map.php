@@ -25,7 +25,7 @@
 
             for (x = room.x; x <= room.x + room.width; ++x) {
                 for (y = room.y; y <= room.y + room.height; ++y) {
-                    var col = "#666666";
+                    var col = (i == 0 ? "#ff0000" : "#666666");
                     if (y == room.y || y == room.y + room.height) col = "#FFFFFF";
                     if (x == room.x || x == room.x + room.width) col = "#FFFFFF";
 
