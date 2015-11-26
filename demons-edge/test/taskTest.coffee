@@ -1,13 +1,12 @@
+util = require '../modules/CHAOTIVE/util'
+GLOBAL.namespace = util.namespace
+console.log(namespace)
+
 chai = require 'chai'
 chai.should()
 
-L3 = {
-  DEMONSEDGE: {
-    GAME: {}
-  }
-};
-
-{Grid} = require '../modules/L3/DEMONSEDGE/GAME/Grid'
+Grid = require '../modules/L3/DEMONSEDGE/GAME/Grid'
+console.log(Grid)
 
 describe 'Grid instance', ->
   task1 = task2 = null

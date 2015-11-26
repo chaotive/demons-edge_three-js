@@ -1,22 +1,24 @@
 /**
  * Created by leo on 12-11-2015.
  */
+
 //SPACES
-var CHAOTIVE = {
+CHAOTIVE = {
     APP: {
         worksheet: {},
         fullscreen: {}
     }
 };
-var L3 = {
+L3 = {
     DEMONSEDGE: {
         GAME: {}
     }
 };
 
 //ALIASES
-var APP = CHAOTIVE.APP;
-var DE = L3.DEMONSEDGE;
+APP = CHAOTIVE.APP;
+DE = L3.DEMONSEDGE;
+
 
 //MAIN FUNCTIONS
 function init() {
