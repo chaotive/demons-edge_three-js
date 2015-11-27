@@ -5,8 +5,8 @@ class DemonsEdge
     @game = new Phaser.Game(@grid.width, @grid.height, Phaser.AUTO, 'game', @)
 
   preload: () ->
-    @game.load.image('sample1', 'resources/img/test/sample1.png');
-    @game.load.image('enemy1', 'resources/img/test/enemy1.png');
+    @game.load.image('sample1', 'resources/img/dev/sample1.png');
+    @game.load.image('enemy1', 'resources/img/dev/enemy1.png');
 
   create: () ->
     @addSprite(0, 0, 'sample1');

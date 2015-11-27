@@ -1,0 +1,15 @@
+{
+  "CHAOTIVE" : {
+    "APP": {
+      "fullscreen": {}
+    }
+  },
+  "L3" : {
+    "DEMONSEDGE": {
+      "GAME": {
+        "cellWidth": 60,
+        "cellHeight": 60
+      }
+    }
+  }
+}

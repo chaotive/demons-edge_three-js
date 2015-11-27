@@ -1,8 +1,8 @@
 class Grid
-  cellWidth: 60
-  cellHeight: 60
 
   constructor: (cols, rows) ->
+    @cellWidth = config.cells.width
+    @cellHeight = config.cells.height
     @width = @cellWidth * cols
     @height = @cellHeight * rows
 

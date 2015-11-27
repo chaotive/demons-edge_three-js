@@ -3,33 +3,22 @@
  */
 
 //SPACES
-CHAOTIVE = {
+var CHAOTIVE = {
     APP: {
-        worksheet: {},
         fullscreen: {}
     }
 };
-L3 = {
+var L3 = {
     DEMONSEDGE: {
         GAME: {}
     }
 };
 
 //ALIASES
-APP = CHAOTIVE.APP;
-DE = L3.DEMONSEDGE;
+var APP = CHAOTIVE.APP;
+var DE = L3.DEMONSEDGE;
 
 //MAIN FUNCTIONS
-function init() {
-    try {
-        console.log("Attempting game start...");
-        game();
-    } catch(err) {
-        console.log("Still loading: " + err.message);
-        setTimeout(init, 200);
-    }
-}
-
 function play() {
     //if (APP.game) APP.game.stop();
     $("#loading").slideUp();

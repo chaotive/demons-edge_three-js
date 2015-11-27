@@ -3,6 +3,17 @@
  */
 console.log("Starting APP...");
 
+function init() {
+    try {
+        console.log("Attempting game start...");
+        loadConfig("resources/config/dev/test.json");
+        game();
+    } catch(err) {
+        console.log("Still loading: " + err.message);
+        setTimeout(init, 200);
+    }
+}
+
 /*
 APP.debug = true;
 DE.stages = [
