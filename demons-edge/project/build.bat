@@ -1,6 +1,6 @@
 #dependencies:
 npm install -g mocha
-npm install -g chai
+npm install chai
 
 npm install -g coffee-script
 npm install -g uglify-js
@@ -13,4 +13,4 @@ coffee --join staging/l3.demonsedge.js --compile modules/L3/DEMONSEDGE
 uglifyjs staging/l3.demonsedge.js --compress --mangle --output js/bin/l3.demonsedge.min.js
 
 #test:
-mocha --compilers coffee:coffee-script/register
+mocha --compilers coffee:coffee-script/register --recursive

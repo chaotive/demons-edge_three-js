@@ -19,7 +19,6 @@ L3 = {
 APP = CHAOTIVE.APP;
 DE = L3.DEMONSEDGE;
 
-
 //MAIN FUNCTIONS
 function init() {
     try {

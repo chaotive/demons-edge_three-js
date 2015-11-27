@@ -10,7 +10,3 @@ class Grid
   getY: (row) -> row * @cellHeight
 
 namespace "L3.DEMONSEDGE.GAME", Grid
-
-#exports.Grid=Grid
-#namespace "L3.DEMONSEDGE.GAME", (exports) ->
-#  exports.Grid = Grid

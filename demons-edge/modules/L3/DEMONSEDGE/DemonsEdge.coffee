@@ -15,5 +15,4 @@ class DemonsEdge
   addSprite: (col, row, id) ->
     @game.add.sprite(@grid.getX(col), @grid.getY(row), id);
 
-namespace "L3.DEMONSEDGE", (exports) ->
-  exports.DemonsEdge = DemonsEdge
+namespace "L3.DEMONSEDGE", DemonsEdge
