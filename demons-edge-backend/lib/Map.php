@@ -126,23 +126,41 @@ class Map {
                     $dx = $room->x + $x;
                     $dy = $room->y + $y;
                     $data = array("x" => $dx, "y" => $dy);
-
+                    $this->json["floors"][] = $data;
+                    /*
                     if ($dy == $room->y || $dy == $room->y + $room->height - 1 ||
                             $dx == $room->x || $dx == $room->x + $room->width - 1) {
                                 $this->json["walls"][] = $data;
                             } else {
                                 $this->json["floors"][] = $data;
                             }
+                            */
                 }
             }
         }
     }
 
     public function generateCorridors($nRooms) {
-        /* $room = $this->rooms[0];
-        $near = $room->findNearestRoom($this->rooms);
-        $corridor = new Room();
-        $corridor->x = $room->x < $near->x ? $room->x : $near->x;
-        $corridor->y = $room->y < $near->y ? $room->y : $near->y; */
+        for ($i = 0; $i < $nRooms; $i++) {
+            $roomA = $this->rooms[$i];
+            $roomB = $roomA->findNearestRoom($this->rooms);
+
+            $pointA = array(rand($roomA->x + 1, $roomA->x + $roomA->width - 1),
+                            rand($roomA->y + 1, $roomA->y + $roomA->height - 1));
+            $pointB = array(rand($roomB->x + 1, $roomB->x + $roomB->width - 1),
+                            rand($roomB->y + 1, $roomB->y + $roomB->height - 1));
+
+            while (($pointB[0] != $pointA[0]) || ($pointB[1] != $pointA[1])) {
+                if ($pointB[0] != $pointA[0]) {
+                    if ($pointB[0] > $pointA[0]) $pointB[0]--;
+                    else $pointB[0]++;
+                } else if ($pointB[1] != $pointA[1]) {
+                    if ($pointB[1] > $pointA[1]) $pointB[1]--;
+                    else $pointB[1]++;
+                }
+
+                $this->json["floors"][] = array("x" => $pointB[0], "y" => $pointB[1]);
+            }
+        }
     }
 }
