@@ -19,7 +19,7 @@ $app->get("/version", function() use ($app) {
 $app->get("/map/:rooms", function($rooms) use ($app) {
     $map = new \Lib\Map(60, 60);
     $map->generate($rooms);
-    $app->render("map.php", array("map" => $map));
+    $app->render("map.php", array("map" => $map->getJSON()));
 });
 
 
