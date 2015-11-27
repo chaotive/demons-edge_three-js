@@ -33,10 +33,12 @@ class Room {
         $nearRoom = null;
 
         foreach ($rooms as $troom) {
+            if ($this == $troom) continue;
+
             $tx = $troom->x + $troom->width / 2;
             $ty = $troom->y + $troom->height / 2;
-            $rx = $room->x + $room->width / 2;
-            $ry = $room->y + $room->height / 2;
+            $rx = $this->x + $this->width / 2;
+            $ry = $this->y + $this->height / 2;
             $d = sqrt(($tx - $rx) * ($tx - $rx) + ($ty - $ry) * ($ty - $ry));
 
             if ($d < $near) {
@@ -45,7 +47,7 @@ class Room {
             }
         }
 
-        return $troom;
+        return $nearRoom;
     }
 }
 
@@ -62,7 +64,38 @@ class Map {
 
     public function generate($nRooms) {
         $this->generateRooms($nRooms);
-        //$this->generateCorridors($nRooms);
+        $this->generateCorridors($nRooms);
+    }
+
+    public function getJSON() {
+        $json = array();
+
+        // Meta
+        $json["width"] = $this->width;
+        $json["height"] = $this->height;
+
+        // Floors & walls & ceilings
+        $json["floors"] = array();
+        $json["walls"] = array();
+
+        foreach ($this->rooms as $room) {
+            for ($x = 0; $x < $room->width; ++$x) {
+                for ($y = 0; $y < $room->height; ++$y) {
+                    $dx = $room->x + $x;
+                    $dy = $room->y + $y;
+                    $data = array("x" => $dx, "y" => $dy);
+
+                    if ($dy == $room->y || $dy == $room->y + $room->height - 1 ||
+                            $dx == $room->x || $dx == $room->x + $room->width - 1) {
+                        $json["walls"][] = $data;
+                    } else {
+                        $json["floors"][] = $data;
+                    }
+                }
+            }
+        }
+
+        return $json;
     }
 
     public function generateRooms($nRooms) {
@@ -94,175 +127,10 @@ class Map {
     }
 
     public function generateCorridors($nRooms) {
-        /* for ($i = 0; $i < $nRooms; $i++) {
-            $room = $this->rooms[$i];
-
-            for ($j = $i + 1; $j < $nRooms; $j++) {
-                $room2 = $room->findNearestVertical();
-
-            }
-        } */
-        $room2 = $room->findNearestVertical($this->rooms);
-        $corridor = new Room($room->x + $room->width / 2, $room->y + $room->height / 2, 3, 10);
-        $this->rooms[] = $corridor;
+        /* $room = $this->rooms[0];
+        $near = $room->findNearestRoom($this->rooms);
+        $corridor = new Room();
+        $corridor->x = $room->x < $near->x ? $room->x : $near->x;
+        $corridor->y = $room->y < $near->y ? $room->y : $near->y; */
     }
 }
-/*
-            // Check inside map
-            if (!(room.x + room.w <= Game.MAXX) || !(room.y + room.h <= Game.MAXY)) {
-                ok = false;
-            }
-        
-            // Check intersections
-            for (j = 0; j < rooms.length; ++j) {
-                var check = rooms[j];
-        
-                if ((room.x <= check.x + check.w && room.x + room.w >= check.x) &&
-                        (room.y <= check.y + check.h && room.y + room.h >= check.y)) {
-                            //console.log(check, room);
-                            ok = false;
-                        }
-            }
-        
-            // Attach
-            if (ok) {
-                rooms.push(room);
-            } else {
-                --i;
-            }
-        }
-    }
-}
-
-
-/*
-var colors = ["#FF0000", "#CC99CC", "#00FF00", "#00CCCC", "#AAFFFF", "#0000FF", "#7700EE", "#0077AA"]; 
-
-function init() {
-    Crafty.init(Game.MAXX * Game.tile, Game.MAXY * Game.tile, 'game');
-    Crafty.background('#004');
-}
-
-function generateMap(nRooms) {
-    var rooms = [], ok, i, j;
-
-    // Create main rooms
-    for (i = 0; i < nRooms; ++i) {
-        ok = true;
-        var room = { x: Math.round(Math.random() * Game.MAXX),
-                     y: Math.round(Math.random() * Game.MAXY),
-                     w: Math.round(Math.random() * 8) + 8,
-                     h: Math.round(Math.random() * 8) + 8 }
-
-        // Check inside map
-        if (!(room.x + room.w <= Game.MAXX) || !(room.y + room.h <= Game.MAXY)) {
-            ok = false;
-        }
-
-        // Check intersections
-        for (j = 0; j < rooms.length; ++j) {
-            var check = rooms[j];
-
-            if ((room.x <= check.x + check.w && room.x + room.w >= check.x) &&
-                (room.y <= check.y + check.h && room.y + room.h >= check.y)) {
-                //console.log(check, room);
-                ok = false;
-            }
-        }
-
-        // Attach
-        if (ok) {
-            rooms.push(room);
-        } else {
-            --i;
-        }
-    }
-
-    // Create corridors
-    // Vertical
-    var min = 9999;
-    var minroom = -1;
-
-    for (i = 1; i < nRooms; ++i) {
-        if ((rooms[0].x >= rooms[i].x && rooms[0].x <= rooms[i].x + rooms[i].w) || 
-            (rooms[i].x >= rooms[0].x && rooms[i].x <= rooms[0].x + rooms[0].w)) {
-            var diff = Math.abs(rooms[0].y + (rooms[0].h / 2) - (rooms[i].y + (rooms[i].h / 2)));
-
-            if (diff < min) {
-                min = diff;
-                minroom = i;
-            }
-        }
-    }
-
-    if (minroom > -1) {
-        var minh = Math.max(rooms[minroom].x, rooms[0].x);
-        var maxh = Math.min(rooms[minroom].x + rooms[minroom].h, rooms[0].x + rooms[0].h);
-        var hor = minh + Math.round(Math.random() * (maxh - minh));
-        var corridor = { x: hor, y: 0, w: 0, h: 0 }
-
-        if (rooms[0].y < rooms[minroom].y) { //
-            corridor.y = rooms[0].y + rooms[0].h + 1;
-            corridor.h = rooms[minroom].y - (rooms[0].y + rooms[0].h) - 2;
-        } else {
-            corridor.y = rooms[minroom].y + rooms[minroom].h + 1;
-            corridor.h = rooms[0].y - (rooms[minroom].y + rooms[minroom].h) - 2;
-        }
-
-        rooms.push(corridor);
-    }
-
-    // Horizontal
-    /* var min = 9999;
-    var minroom = -1;
-
-    for (i = 1; i < nRooms; ++i) {
-        if ((rooms[0].y >= rooms[i].y && rooms[0].y <= rooms[i].y + rooms[i].h) || 
-            (rooms[i].y >= rooms[0].y && rooms[i].y <= rooms[0].y + rooms[0].h)) {
-            var diff = Math.abs(rooms[0].x + (rooms[0].x / 2) - (rooms[i].x + (rooms[i].w / 2)));
-
-            if (diff < min) {
-                min = diff;
-                minroom = i;
-            }
-        }
-    }
-
-    if (minroom > -1) {
-        var minv = Math.max(rooms[minroom].y, rooms[0].y);
-        var maxv = Math.min(rooms[minroom].y + rooms[minroom].w, rooms[0].y + rooms[0].w);
-        var ver = minv + Math.round(Math.random() * (maxv - minv));
-        var corridor = { x: 0, y: ver, w: 0, h: 0 }
-
-        if (rooms[0].x < rooms[minroom].x) {
-            corridor.x = rooms[0].x + rooms[0].w + 1;
-            corridor.w = rooms[minroom].x - (rooms[0].x + rooms[0].w) - 2;
-        } else {
-            corridor.x = rooms[minroom].x + rooms[minroom].w + 1;
-            corridor.w = rooms[0].x - (rooms[minroom].x + rooms[minroom].w) - 2;
-        }
-
-        rooms.push(corridor);
-    } ///
-
-    return rooms;
-}
-
-function renderMap() {
-    var i, x, y;
-
-    for (i = 0; i < Game.map.length; ++i) {
-        var room = Game.map[i];
-
-        for (x = room.x; x <= room.x + room.w; ++x) {
-            for (y = room.y; y <= room.y + room.h; ++y) {
-                Crafty.e("2D, Canvas, Color")
-                      .attr({ x: x * Game.tile, y: y * Game.tile, w: Game.tile - 2, h: Game.tile - 2 })
-                      .color(i > 6 ? '#FFFFFF' : colors[i]);
-            }
-        }
-    }
-}
-
-
- */

@@ -19,22 +19,24 @@
         var map = <?php echo json_encode($map) ?>;
         Crafty.init(map.width * tile, map.height * tile, 'game');
         Crafty.background('#004');
+        console.log(map);
 
-        for (i = 0; i < map.rooms.length; ++i) {
-            var room = map.rooms[i];
+        for (i = 0; i < map.floors.length; ++i) {
+            var floor = map.floors[i];
 
-            for (x = room.x; x <= room.x + room.width; ++x) {
-                for (y = room.y; y <= room.y + room.height; ++y) {
-                    var col = (i == 0 ? "#ff0000" : "#666666");
-                    if (y == room.y || y == room.y + room.height) col = "#FFFFFF";
-                    if (x == room.x || x == room.x + room.width) col = "#FFFFFF";
-
-                    Crafty.e("2D, Canvas, Color")
-                          .attr({ x: x * tile, y: y * tile, w: tile - 1, h: tile - 1 })
-                          .color(col);
-                }
-            }
+            Crafty.e("2D, Canvas, Color")
+                  .attr({ x: floor.x * tile, y: floor.y * tile, w: tile - 1, h: tile - 1 })
+                  .color("#666666");
         }
+
+        for (i = 0; i < map.walls.length; ++i) {
+            var wall = map.walls[i];
+
+            Crafty.e("2D, Canvas, Color")
+                  .attr({ x: wall.x * tile, y: wall.y * tile, w: tile - 1, h: tile - 1 })
+                  .color("#ffffff");
+        }
+
         </script>
     </body>
 </html>
