@@ -25,7 +25,7 @@ class Room {
     }
 
     public function inside($map) {
-        return ($this->x + $this->width < $map->width) && ($this->y + $this->height < $map->height);
+        return ($this->x + $this->width < $map->getWidth()) && ($this->y + $this->height < $map->getHeight());
     }
 
     public function findNearestRoom($rooms) {
@@ -52,9 +52,10 @@ class Room {
 }
 
 class Map {
-    public $rooms;
-    public $width;
-    public $height;
+    private $rooms;
+    private $width;
+    private $height;
+    private $json;
 
     public function __construct($width, $height) {
         $this->rooms = array();
@@ -62,40 +63,30 @@ class Map {
         $this->height = $height;
     }
 
-    public function generate($nRooms) {
-        $this->generateRooms($nRooms);
-        $this->generateCorridors($nRooms);
+    public function getWidth() {
+        return $this->width;
+    }
+
+    public function getHeight() {
+        return $this->height;
     }
 
     public function getJSON() {
-        $json = array();
+        return $this->json;
+    }
+
+    public function generate($nRooms) {
+        $this->json = array();
 
         // Meta
-        $json["width"] = $this->width;
-        $json["height"] = $this->height;
+        $this->json["width"] = $this->width;
+        $this->json["height"] = $this->height;
 
-        // Floors & walls & ceilings
-        $json["floors"] = array();
-        $json["walls"] = array();
+        // Rooms and corridors
+        $this->generateRooms($nRooms);
+        $this->generateCorridors($nRooms);
 
-        foreach ($this->rooms as $room) {
-            for ($x = 0; $x < $room->width; ++$x) {
-                for ($y = 0; $y < $room->height; ++$y) {
-                    $dx = $room->x + $x;
-                    $dy = $room->y + $y;
-                    $data = array("x" => $dx, "y" => $dy);
-
-                    if ($dy == $room->y || $dy == $room->y + $room->height - 1 ||
-                            $dx == $room->x || $dx == $room->x + $room->width - 1) {
-                        $json["walls"][] = $data;
-                    } else {
-                        $json["floors"][] = $data;
-                    }
-                }
-            }
-        }
-
-        return $json;
+        //Objects...monsters...?
     }
 
     public function generateRooms($nRooms) {
@@ -122,6 +113,27 @@ class Map {
                 $this->rooms[] = $room;
             } else {
                 --$i;
+            }
+        }
+
+        // Floors & walls & ceilings
+        $this->json["floors"] = array();
+        $this->json["walls"] = array();
+
+        foreach ($this->rooms as $room) {
+            for ($x = 0; $x < $room->width; ++$x) {
+                for ($y = 0; $y < $room->height; ++$y) {
+                    $dx = $room->x + $x;
+                    $dy = $room->y + $y;
+                    $data = array("x" => $dx, "y" => $dy);
+
+                    if ($dy == $room->y || $dy == $room->y + $room->height - 1 ||
+                            $dx == $room->x || $dx == $room->x + $room->width - 1) {
+                                $this->json["walls"][] = $data;
+                            } else {
+                                $this->json["floors"][] = $data;
+                            }
+                }
             }
         }
     }
