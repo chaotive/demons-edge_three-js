@@ -1,6 +1,7 @@
-# README #
+# Demon's Edge #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Everyone has an adventure to do. You play this game by starting an adventure, your own personal adventure (but, you can still play with your friends).
+Who would be the most awesome adventurer?
 
 ### What is this repository for? ###
 
