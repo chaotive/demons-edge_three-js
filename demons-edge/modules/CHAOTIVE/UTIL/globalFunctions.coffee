@@ -7,7 +7,7 @@ top.namespace = (nsTarget, classRef) ->
   target[classRef.name] = classRef
   # console.log(top[nsPath[0]])
 
-top.loadConfig = (url) -> $.getJSON(url, (data) ->
-  console.log(data)
-  top.config = data.config
+top.loadJSON = (url, objs, cb) -> $.getJSON(url, (data) ->
+  (top[obj] = data[obj]) for obj in objs
+  cb()
 )

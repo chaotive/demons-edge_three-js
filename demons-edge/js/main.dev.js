@@ -6,8 +6,7 @@ console.log("Starting APP...");
 function init() {
     try {
         console.log("Attempting game start...");
-        loadConfig("resources/config/dev/test.json");
-        game();
+        loadJSON("resources/config/dev/test.json", ["config"], game);
     } catch(err) {
         console.log("Still loading: " + err.message);
         setTimeout(init, 200);

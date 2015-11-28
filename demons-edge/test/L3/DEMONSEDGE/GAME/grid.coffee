@@ -1,5 +1,7 @@
-require '../../../../modules/CHAOTIVE/UTIL/test'
-require '../../../../modules/L3/DEMONSEDGE/GAME/Grid'
+path = "../../../../"
+global.config = (require path+'resources/config/dev/test.json').config
+require path+'modules/CHAOTIVE/UTIL/test'
+require path+'modules/L3/DEMONSEDGE/GAME/Grid'
 
 describe 'Grid instance', ->
   it 'should create correct dimensions', ->

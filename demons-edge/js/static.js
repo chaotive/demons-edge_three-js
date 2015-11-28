@@ -3,20 +3,10 @@
  */
 
 //SPACES
-var CHAOTIVE = {
-    APP: {
-        fullscreen: {}
-    }
+var APP = {
+    fullscreen: {}
 };
-var L3 = {
-    DEMONSEDGE: {
-        GAME: {}
-    }
-};
-
-//ALIASES
-var APP = CHAOTIVE.APP;
-var DE = L3.DEMONSEDGE;
+var L3 = { DEMONSEDGE: {}};
 
 //MAIN FUNCTIONS
 function play() {
