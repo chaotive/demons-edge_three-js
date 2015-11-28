@@ -22,3 +22,7 @@ function game() {
     $("#loading").slideUp();
     $("#game").slideDown();
 }
+
+function fullscreen() {
+    APP.fullscreen.enter(APP.game.game.renderer.view);
+}

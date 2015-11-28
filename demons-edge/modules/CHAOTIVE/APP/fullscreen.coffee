@@ -1,5 +1,4 @@
-APP.fullscreen.enter = () ->
-  c = RASPE.renderer.view
+APP.fullscreen.enter = (c) ->
   if (c.requestFullscreen) then c.requestFullscreen()
   if (c.webkitRequestFullscreen) then c.webkitRequestFullscreen()
   if (c.mozRequestFullScreen) then c.mozRequestFullScreen()
