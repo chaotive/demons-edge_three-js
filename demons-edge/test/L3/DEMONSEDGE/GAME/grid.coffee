@@ -1,6 +1,5 @@
 path = "../../../../"
 global.config = (require path+'resources/config/dev/test.json').config
-console.log(global.config)
 require path+'modules/CHAOTIVE/UTIL/test'
 require path+'modules/L3/DEMONSEDGE/GAME/Grid'
 
