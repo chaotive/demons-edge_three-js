@@ -1,9 +1,9 @@
 #dependencies:
 npm install -g mocha
-npm install chai
-
 npm install -g coffee-script
 npm install -g uglify-js
+
+npm install chai
 
 #build:
 coffee --join staging/chaotive.app.js --compile modules/CHAOTIVE/APP
