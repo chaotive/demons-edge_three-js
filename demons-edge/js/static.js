@@ -6,7 +6,11 @@
 var APP = {
     fullscreen: {}
 };
-var L3 = { DEMONSEDGE: {}};
+var L3 = {
+    DEMONSEDGE: {
+        GAME: {}
+    }
+};
 
 //MAIN FUNCTIONS
 function play() {

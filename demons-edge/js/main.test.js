@@ -1,12 +1,12 @@
 /**
  * Created by leo on 12-11-2015.
  */
-console.log("Starting APP...");
+console.log("Starting test suite...");
 
 function init() {
     try {
         console.log("Attempting start...");
-        loadJSON("resources/config/dev/test.json", ["config"], game);
+        loadJSON("resources/config/dev/test.json", ["config"], testMocha);
         console.log("... application started! :)");
     } catch(err) {
         console.log("Still loading: " + err.message);
@@ -14,11 +14,8 @@ function init() {
     }
 }
 
-/*
-APP.debug = true;
-DE.stages = [
-    "resources/stages/test/stage1.json",
-    "resources/stages/test/stage2.json",
-    "resources/stages/test/stage3.json"
-];
-*/
+function testMocha() {
+    window.expect = chai.expect;
+    window.should = chai.should();
+    var runner = mocha.run();
+}

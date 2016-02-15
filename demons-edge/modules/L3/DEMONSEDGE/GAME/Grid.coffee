@@ -1,4 +1,4 @@
-class Grid
+class L3.DEMONSEDGE.GAME.Grid
 
   constructor: (cols, rows) ->
     @cellWidth = config.cells.width
@@ -8,5 +8,3 @@ class Grid
 
   getX: (col) -> col * @cellWidth
   getY: (row) -> row * @cellHeight
-
-namespace "L3.DEMONSEDGE.GAME", Grid

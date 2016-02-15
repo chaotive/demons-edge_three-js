@@ -1,4 +1,5 @@
-class DemonsEdge
+class L3.DEMONSEDGE.DemonsEdge
+
   constructor: () ->
     console.log("Welcome to DemonsEdge")
     @grid = new L3.DEMONSEDGE.GAME.Grid(3, 2)
@@ -14,5 +15,3 @@ class DemonsEdge
 
   addSprite: (col, row, id) ->
     @game.add.sprite(@grid.getX(col), @grid.getY(row), id);
-
-namespace "L3.DEMONSEDGE", DemonsEdge

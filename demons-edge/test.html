@@ -19,21 +19,17 @@
 
 <script src="js/static.js"></script>
 
-<script src="js/main.dev.js"></script>
+<script src="js/main.test.js"></script>
+<link rel="stylesheet" type="text/css" href="css/test/mocha.css">
 
 <body onload="init()">
 
-<div id="main">
-    <div id="loading">Loading...</div>
-    <div id="play">
-        <button onclick="game()">Play</button>
-        <button onclick="fullscreen();game()">Play (Fullscreen)</button>
-    </div>
-    <div id="game"></div>
-</div>
+<script src="js/lib/test/chai.js" type="text/javascript"></script>
+<script src="js/lib/test/mocha.js"></script>
+<script>mocha.setup('bdd')</script>
+<div id="mocha"></div>
 
-<button onclick="fullscreen()">Fullscreen</button>
-<!-- <button onclick="init()">Reset</button> -->
+<script src="test/L3/DEMONSEDGE/GAME/grid.coffee" type="text/coffeescript"></script>
 
 </body>
 </html>
