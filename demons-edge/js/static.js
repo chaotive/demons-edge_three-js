@@ -8,7 +8,8 @@ var APP = {
 };
 var L3 = {
     DEMONSEDGE: {
-        GAME: {}
+        MAP: {},
+        CHARACTERS: {}
     }
 };
 

@@ -1,4 +1,4 @@
-class L3.DEMONSEDGE.GAME.Grid
+class L3.DEMONSEDGE.MAP.Grid
 
   constructor: (cols, rows) ->
     @cellWidth = config.cells.width
