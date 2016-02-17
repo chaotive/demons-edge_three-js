@@ -22,3 +22,22 @@ DE.stages = [
     "resources/stages/test/stage3.json"
 ];
 */
+
+//MAIN FUNCTIONS
+function play() {
+    //if (APP.game) APP.game.stop();
+    $("#loading").slideUp();
+    $("#game").slideUp();
+    $("#play").slideDown();
+}
+
+function game() {
+    APP.game = new L3.DEMONSEDGE.DemonsEdge();
+    //$("#play").slideUp();
+    $("#loading").slideUp();
+    $("#game").slideDown();
+}
+
+function fullscreen() {
+    APP.fullscreen.enter(APP.game.game.renderer.view);
+}
