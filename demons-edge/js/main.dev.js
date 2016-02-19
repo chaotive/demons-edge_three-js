@@ -28,7 +28,7 @@ function play() {
     //if (APP.game) APP.game.stop();
     $("#loading").slideUp();
     $("#game").slideUp();
-    $("#play").slideDown();
+    //$("#play").slideDown();
 }
 
 function game() {

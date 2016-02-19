@@ -3,7 +3,7 @@ class L3.DEMONSEDGE.DemonsEdge
   constructor: () ->
     console.log("Welcome to DemonsEdge")
     @grid = new L3.DEMONSEDGE.MAP.Grid(3, 2)
-    @env = new L3.DEMONSEDGE.THREE.Environment(true, 'container')
+    @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game')
     #@game = new Phaser.Game(@grid.width, @grid.height, Phaser.AUTO, 'game', @)
 
   #phaser:
