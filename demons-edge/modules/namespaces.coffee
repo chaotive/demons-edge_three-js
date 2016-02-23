@@ -7,4 +7,6 @@ top.L3 =
   DEMONSEDGE:
     MAP: {}
     CHARACTERS: {}
-    THREE: {}
+    THREE: {
+      SHAPES: {}
+    }

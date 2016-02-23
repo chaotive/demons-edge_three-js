@@ -20,7 +20,6 @@ class L3.DEMONSEDGE.THREE.Environment
     # lights
     ambient = new THREE.AmbientLight( 0x444444 );
     @scene.add( ambient );
-
     pointLight = new THREE.PointLight( 0xffffff, 1, 100 )
     @scene.add( @camera )
     @camera.add(pointLight)

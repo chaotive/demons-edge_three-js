@@ -4,7 +4,7 @@ class L3.DEMONSEDGE.CHARACTERS.Player extends L3.DEMONSEDGE.CHARACTERS.Base
     @sprite = @addSprite(@de, col, row, id)
     #@sprite.inputEnabled = true
     #@sprite.events.onInputUp.add(@onClick)
-    console.log(@sprite)
+    #console.log(@sprite)
 
   onClick: (e) =>
     console.log(e)

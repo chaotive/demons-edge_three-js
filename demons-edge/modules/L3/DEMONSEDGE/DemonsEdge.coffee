@@ -17,5 +17,6 @@ class L3.DEMONSEDGE.DemonsEdge
 
   create: () =>
     console.log("... preload finished!")
+    @floor = new L3.DEMONSEDGE.MAP.Floor(@)
     @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')
     @enemy = new L3.DEMONSEDGE.CHARACTERS.Enemy(@, 1, 0, 'enemy1')

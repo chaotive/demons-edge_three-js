@@ -3,6 +3,9 @@
     "cells": {
       "width": 60,
       "height": 60
+    },
+    "floor": {
+      "height": 1
     }
   }
 }
