@@ -1,6 +1,6 @@
 class L3.DEMONSEDGE.MAP.Grid
 
-  constructor: (@cols, @rows) ->
+  constructor: (@rows, @cols) ->
     @cellWidth = config.cells.width
     @cellHeight = config.cells.height
     @width = @cellWidth * @cols

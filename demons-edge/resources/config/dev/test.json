@@ -1,8 +1,8 @@
 {
   "config" : {
     "cells": {
-      "width": 60,
-      "height": 60
+      "width": 3,
+      "height": 3
     },
     "floor": {
       "height": 1

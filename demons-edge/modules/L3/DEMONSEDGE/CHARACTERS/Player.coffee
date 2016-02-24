@@ -1,7 +1,8 @@
 class L3.DEMONSEDGE.CHARACTERS.Player extends L3.DEMONSEDGE.CHARACTERS.Base
 
-  constructor: (@de, col, row, id) ->
-    @sprite = @addSprite(@de, col, row, id)
+  constructor: (@de, row, col, id) ->
+    @sprite = @addSprite(@de.grid, row, col, id)
+    @de.env.scene.add( @sprite )
     #@sprite.inputEnabled = true
     #@sprite.events.onInputUp.add(@onClick)
     #console.log(@sprite)
