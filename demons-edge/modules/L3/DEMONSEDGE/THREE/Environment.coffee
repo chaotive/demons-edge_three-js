@@ -31,6 +31,7 @@ class L3.DEMONSEDGE.THREE.Environment
     @container.appendChild( @renderer.domElement )
 
     @controls = new L3.DEMONSEDGE.THREE.Controls(@camera, @renderer.domElement)
+    #@controls.enabled = false
 
     #window behaviours listeners
     window.addEventListener( 'resize', @onWindowResize, false )
