@@ -17,6 +17,12 @@ class L3.DEMONSEDGE.DemonsEdge
 
   create: () =>
     console.log("... preload finished!")
+
     @floor = new L3.DEMONSEDGE.MAP.Floor(@)
     @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')
     @enemy = new L3.DEMONSEDGE.CHARACTERS.Enemy(@, 1, 2, 'enemy1')
+    @createGroups()
+
+  createGroups: () ->
+    @sg1 = new L3.DEMONSEDGE.THREE.Group(@, [@floor.sprite, @player.sprite, @enemy.sprite])
+    @sg1.position.x = @grid.width / -2
