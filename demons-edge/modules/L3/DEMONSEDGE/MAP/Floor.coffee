@@ -20,7 +20,7 @@ class L3.DEMONSEDGE.MAP.Floor
 class L3.DEMONSEDGE.MAP.Cell
 
   constructor: (g, @row, @col) ->
-    console.log(@row + ", " + @col)
+    #console.log(@row + ", " + @col)
     @sprite = new L3.DEMONSEDGE.THREE.SHAPES.Box(g.cellWidth, g.cellHeight, config.floor.height)
     @sprite.position.setX(@col * g.cellWidth)
     @sprite.position.setY(@row * g.cellHeight)
