@@ -11,6 +11,20 @@ class L3.DEMONSEDGE.CHARACTERS.Player extends L3.DEMONSEDGE.CHARACTERS.Base
     console.log(e)
     @createMenu()
 
+  move: (row, col) ->
+    position = { x : @sprite.position.x, y: @sprite.position.y }
+    console.log(@de)
+    target = { x : @de.grid.getX(col), y: @de.grid.getY(row) }
+    console.log(target)
+    @tween = new TWEEN.Tween(position).to(target, 500)
+    @tween.onUpdate(() =>
+      #console.log(position.x)
+      #console.log(position.y)
+      @sprite.position.x = position.x
+      @sprite.position.y = position.y;
+    )
+    @tween.start();
+
   createMenu: () ->
     console.log("creating menu...")
 #    r = new Phaser.Rectangle(0,0,100,100)

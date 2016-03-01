@@ -6,17 +6,6 @@ class L3.DEMONSEDGE.DemonsEdge
     @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game')
     @preload()
 
-    position = { x : 0, y: 300 };
-    target = { x : 400, y: 50 };
-    @tween = new TWEEN.Tween(position).to(target, 2000);
-    @tween.onUpdate(() ->
-      console.log(position.x)
-      console.log(position.y)
-#      mesh.position.x = position.x;
-#      mesh.position.y = position.y;
-    )
-    @tween.start();
-
   preload: () ->
     console.log("Preloading ...")
     @preloader = new L3.DEMONSEDGE.THREE.Preload(@create)
