@@ -32,7 +32,7 @@ function play() {
 }
 
 function game() {
-    APP.game = new L3.DEMONSEDGE.DemonsEdge();
+    L3.de = new L3.DEMONSEDGE.DemonsEdge();
     //$("#play").slideUp();
     $("#loading").slideUp();
     $("#game").slideDown();

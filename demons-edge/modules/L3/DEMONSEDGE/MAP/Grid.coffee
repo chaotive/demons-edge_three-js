@@ -6,14 +6,5 @@ class L3.DEMONSEDGE.MAP.Grid
     @width = @cellWidth * @cols
     @height = @cellHeight * @rows
 
-  getX: (col) ->
-    console.log(col + " " + @cellWidth)
-    x = col * @cellWidth
-    console.log(x)
-    x
-  getY: (row) ->
-    console.log(row + " " + @cellHeight)
-    y = row * @cellHeight
-    console.log(y)
-    y
-
+  getX: (col) -> x = col * @cellWidth
+  getY: (row) -> y = row * @cellHeight
