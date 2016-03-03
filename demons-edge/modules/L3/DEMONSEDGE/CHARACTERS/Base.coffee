@@ -18,7 +18,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
     return sprite
 
   moveRel: (rowOffset, colOffset) ->
-    console.log("Attempting move: " + @row + " " + @col)
+    console.log("Attempting move: " + rowOffset + " " + colOffset)
     @move(@row + rowOffset * @speed, @col + colOffset * @speed)
 
   move: (row, col) ->
@@ -39,4 +39,9 @@ class L3.DEMONSEDGE.CHARACTERS.Base
         console.log("Finished move: " + @row + " " + @col)
       )
       tween.start();
+    else if !@actions then console.warn("No actions available!")
+    else console.warn("Can't move, already moving?")
 
+  turnReset: () ->
+    @actions = @actionsPerTurn
+    console.log(@actions + " " + @actionsPerTurn)
