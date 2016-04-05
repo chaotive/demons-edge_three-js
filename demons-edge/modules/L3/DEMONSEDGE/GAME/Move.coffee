@@ -8,9 +8,11 @@ class L3.DEMONSEDGE.GAME.Move
     if @state then @de.moving.add @
     else @de.moving.remove @
 
+  is: -> @state
+
 class L3.DEMONSEDGE.GAME.MoveGlobal
 
-  constructor: () -> @objs = []
+  constructor: -> @objs = []
   
   add: (obj) -> @objs.push obj
 
@@ -18,4 +20,4 @@ class L3.DEMONSEDGE.GAME.MoveGlobal
     i = @objs.indexOf(obj)
     @objs.splice(i, 1)
 
-  is: () -> @objs.length == 0
+  is: -> @objs.length == 0

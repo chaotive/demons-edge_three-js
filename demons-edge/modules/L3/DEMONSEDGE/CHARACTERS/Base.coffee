@@ -22,7 +22,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
     @move(@row + rowOffset * @speed, @col + colOffset * @speed)
 
   move: (row, col) ->
-    if !@moving.state && @actions
+    if !@moving.is() && @actions
       @moving.set(true)
       @row = row
       @col = col
