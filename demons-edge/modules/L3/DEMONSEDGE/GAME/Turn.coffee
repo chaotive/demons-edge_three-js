@@ -2,7 +2,6 @@ class L3.DEMONSEDGE.GAME.Turn
 
   constructor: (@de) ->
     @number = 0
-    console.log(@de)
     @newTurn()
 
   advance: () ->
