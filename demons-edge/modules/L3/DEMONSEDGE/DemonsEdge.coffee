@@ -2,6 +2,7 @@ class L3.DEMONSEDGE.DemonsEdge
 
   constructor: () ->
     console.log("Welcome to DemonsEdge")
+    @moving = new L3.DEMONSEDGE.GAME.MoveGlobal()
     @preload()
 
   preload: () ->

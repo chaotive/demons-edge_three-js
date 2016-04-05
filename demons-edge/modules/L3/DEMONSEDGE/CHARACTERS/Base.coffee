@@ -3,7 +3,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
   constructor: (@de, @row, @col, id) ->
     @sprite = @addSprite(@de.grid, @row, @col, id)
     @de.env.scene.add( @sprite )
-    @moving = false
+    @moving = new L3.DEMONSEDGE.GAME.Move(@)
     @actionsPerTurn = 1
     @actions = @actionsPerTurn
     @speed = 1 #number of cells to move, always use an Int!
@@ -22,8 +22,11 @@ class L3.DEMONSEDGE.CHARACTERS.Base
     @move(@row + rowOffset * @speed, @col + colOffset * @speed)
 
   move: (row, col) ->
-    if !@moving && @actions
-      @moving = true
+    if !@moving.state && @actions
+      @moving.set(true)
+      @row = row
+      @col = col
+      @actions--
       position = { x : @sprite.position.x, y: @sprite.position.y }
       target = { x : @de.grid.getX(col), y: @de.grid.getY(row) }
       tween = new TWEEN.Tween(position).to(target, 500)
@@ -32,10 +35,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
         @sprite.position.y = position.y;
       )
       tween.onComplete(() =>
-        @row = row
-        @col = col
-        @actions--
-        @moving = false
+        @moving.set(false)
         console.log("Finished move: " + @row + " " + @col)
       )
       tween.start();
@@ -45,3 +45,4 @@ class L3.DEMONSEDGE.CHARACTERS.Base
   turnReset: () ->
     @actions = @actionsPerTurn
     console.log(@actions + " " + @actionsPerTurn)
+

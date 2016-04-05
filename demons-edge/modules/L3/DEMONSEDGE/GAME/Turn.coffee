@@ -2,11 +2,14 @@ class L3.DEMONSEDGE.GAME.Turn
 
   constructor: (@de) ->
     @number = 0
+    console.log(@de)
     @newTurn()
 
   advance: () ->
-    @moveEnemies()
-    @newTurn()
+    if(@de.moving.is())
+      @moveEnemies()
+      @newTurn()
+    else console.warn("Still moving!")
 
   moveEnemies: () ->
     random = CHAOTIVE.UTIL.Random
