@@ -28,7 +28,8 @@ class L3.DEMONSEDGE.DemonsEdge
     @turns = new L3.DEMONSEDGE.GAME.Turn(@)
 
   createGroups: () ->
-    @sg1 = new L3.DEMONSEDGE.THREE.Group(@, [@map.floor.sprite, @player.sprite, @enemy.sprite])
+    @sg1 = new L3.DEMONSEDGE.THREE.Group(@, [@map.floors[0].sprite, @player.sprite, @enemy.sprite])
+    #@sg1 = new L3.DEMONSEDGE.THREE.Group(@, [@player.sprite, @enemy.sprite])
     #@sg1.translateX(@grid.width / -2)
     @sg1.translateX(0)
     @sg1.translateZ(-15)
