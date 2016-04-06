@@ -6,7 +6,7 @@ console.log("Starting APP...");
 function init() {
     try {
         console.log("Attempting start...");
-        loadJSON("resources/config/dev/test.json", ["config"], game);
+        game();
         console.log("... application started! :)");
     } catch(err) {
         console.log("Still loading: " + err.message);

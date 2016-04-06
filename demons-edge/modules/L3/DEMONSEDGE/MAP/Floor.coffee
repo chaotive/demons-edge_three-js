@@ -1,26 +1,25 @@
 class L3.DEMONSEDGE.MAP.Floor
 
-  constructor: (@de) ->
-    @cells = []
+  constructor: (@map, @r, @c, @rows, @cols) ->
     @sprite = new THREE.Object3D()
-    g = @de.grid
+    @cells = []
     #console.log(g)
-    for r in [0...g.rows]
-      for c in [0...g.cols]
-        cell = new L3.DEMONSEDGE.MAP.Cell(g, r, c)
+    for r in [0...@rows]
+      for c in [0...@cols]
+        cell = new L3.DEMONSEDGE.MAP.Cell(@map, r, c)
         @sprite.add(cell.sprite)
         @cells.push cell
-    @de.env.scene.add( @sprite )
+    @map.de.env.scene.add( @sprite )
     @sprite.add(new THREE.AxisHelper( 150 ))
 
     for c in @cells
       edges = new THREE.EdgesHelper( c.sprite, 0x00ff00 )
-      @de.env.scene.add(edges)
+      @map.de.env.scene.add(edges)
 
 class L3.DEMONSEDGE.MAP.Cell
 
-  constructor: (g, @row, @col) ->
+  constructor: (map, @row, @col) ->
     #console.log(@row + ", " + @col)
-    @sprite = new L3.DEMONSEDGE.THREE.SHAPES.Box(g.cellWidth, g.cellHeight, config.floor.height)
-    @sprite.position.setX(@col * g.cellWidth)
-    @sprite.position.setY(@row * g.cellHeight)
+    @sprite = new L3.DEMONSEDGE.THREE.SHAPES.Box(map.cell.width, map.cell.height, map.cell.depth)
+    @sprite.position.setX(@col * map.cell.width)
+    @sprite.position.setY(@row * map.cell.height)

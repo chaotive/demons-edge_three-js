@@ -1,11 +1,9 @@
 {
   "config" : {
-    "cells": {
+    "cell": {
       "width": 3,
-      "height": 3
-    },
-    "floor": {
-      "height": 1
+      "height": 3,
+      "depth": 1
     }
   }
 }
