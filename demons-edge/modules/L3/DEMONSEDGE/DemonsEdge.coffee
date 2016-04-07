@@ -18,6 +18,8 @@ class L3.DEMONSEDGE.DemonsEdge
 
     @moving = new L3.DEMONSEDGE.GAME.MoveGlobal()
     @config = config
+    DG.Dungeon.Generate()
+    console.log(DG.Dungeon)
 
     @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game')
     @map = new L3.DEMONSEDGE.MAP.Map(@)
