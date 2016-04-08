@@ -44,4 +44,3 @@ class L3.DEMONSEDGE.CHARACTERS.Base
   turnReset: () ->
     @actions = @actionsPerTurn
     console.log(@actions + " " + @actionsPerTurn)
-

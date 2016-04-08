@@ -1,16 +1,15 @@
-class L3.DEMONSEDGE.MAP.Floor
+class L3.DEMONSEDGE.MAP.Room
 
   constructor: (@map, {@r, @c, @rows, @cols}) ->
     @sprite = new THREE.Object3D()
     @cells = []
-    #console.log(g)
     for r in [0...@rows]
       for c in [0...@cols]
         cell = new L3.DEMONSEDGE.MAP.Cell(@map, @r + r, @c + c)
         @sprite.add(cell.sprite)
         @cells.push cell
     @map.de.env.scene.add( @sprite )
-    @sprite.add(new THREE.AxisHelper( 150 ))
+    # @sprite.add(new THREE.AxisHelper( 150 ))
 
     for c in @cells
       edges = new THREE.EdgesHelper( c.sprite, 0x00ff00 )

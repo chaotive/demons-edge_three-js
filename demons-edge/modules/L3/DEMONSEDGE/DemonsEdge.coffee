@@ -6,7 +6,7 @@ class L3.DEMONSEDGE.DemonsEdge
 
   preload: () =>
     console.log("Preloading ...")
-    @preloader = new L3.DEMONSEDGE.THREE.Preload(@create)
+    @preloader = new L3.DEMONSEDGE.THREE.Preload( => console.log("... preload finished!"); @create() )
 
     textureImgs =
       'sample1': 'resources/img/dev/sample1.png'
@@ -14,23 +14,26 @@ class L3.DEMONSEDGE.DemonsEdge
     @preloader.loadTextures(textureImgs)
 
   create: () =>
-    console.log("... preload finished!")
-
+    @createConfig(config)
+    @createEnvironment()
     @moving = new L3.DEMONSEDGE.GAME.MoveGlobal()
-    @config = config
-    DG.Dungeon.Generate()
-    console.log(DG.Dungeon)
+    @turns = new L3.DEMONSEDGE.GAME.Turn(@)
 
+  createConfig: (config) ->
+    RDG.Dungeon.Generate()
+    rooms = RDG.Dungeon.rooms.map (r) -> {r: r.x, c: r.y, rows: r.w, cols: r.h}
+    config.map.rooms = rooms
+    @config = config
+
+  createEnvironment: () ->
     @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game')
     @map = new L3.DEMONSEDGE.MAP.Map(@)
     @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')
     @enemy = new L3.DEMONSEDGE.CHARACTERS.Enemy(@, 1, 2, 'enemy1')
     @createGroups()
 
-    @turns = new L3.DEMONSEDGE.GAME.Turn(@)
-
   createGroups: () ->
-    @sg1 = new L3.DEMONSEDGE.THREE.Group(@, [@map.floors[0].sprite, @player.sprite, @enemy.sprite])
+    @sg1 = new L3.DEMONSEDGE.THREE.Group(@, (r.sprite for r in @map.rooms).concat [@player.sprite, @enemy.sprite])
     #@sg1 = new L3.DEMONSEDGE.THREE.Group(@, [@player.sprite, @enemy.sprite])
     #@sg1.translateX(@grid.width / -2)
     @sg1.translateX(0)
