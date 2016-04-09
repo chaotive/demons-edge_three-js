@@ -6,14 +6,21 @@
     vertical-align: middle;
 }
 
-#play, #game {
-    display: none;
-}
+#play, #game { display: none; }
+
+#game { width: auto; }
 
 #game-scene {
-    display:block;
     margin:1em auto;
     border:1px solid black;
     background:url(../resources/img/dev/background.png);
     background-size: 100% auto;
+}
+
+#game-hud {
+    margin:1em auto;
+    border:1px solid black;
+    background-color:red;
+    width: 100px;
+    height: 430px;
 }

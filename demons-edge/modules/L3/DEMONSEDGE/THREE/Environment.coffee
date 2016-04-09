@@ -6,7 +6,7 @@ class L3.DEMONSEDGE.THREE.Environment
 
   init: (renderAlpha, canvasId) ->
     @canvas = document.getElementById(canvasId);
-    @parent = @canvas.parentNode
+    @parent = @canvas.parentNode.parentNode
     @scene = new L3.DEMONSEDGE.THREE.Scene()
     @camera = new L3.DEMONSEDGE.THREE.Camera()
 
@@ -35,7 +35,7 @@ class L3.DEMONSEDGE.THREE.Environment
 
   updateRendererSize: () =>
     @size =
-      width: @parent.offsetWidth-50
+      width: @parent.offsetWidth-150
       height: @parent.offsetHeight-50
     #@camera.aspect = window.innerWidth / window.innerHeight
     @camera.aspect = @size.width / @size.height
