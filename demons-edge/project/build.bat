@@ -1,24 +1,13 @@
-#DEPENDENCIES INSTALLATION
+REM build:
 
-#build
-npm install -g coffee-script
-npm install -g uglify-js
+call coffee --join staging/namespaces.js --compile modules/namespaces.coffee
+call uglifyjs staging/namespaces.js --compress --mangle --output js/bin/namespaces.min.js
 
-#app web server:
-npm install connect serve-static
+call coffee --join staging/chaotive.app.js --compile modules/CHAOTIVE/APP
+call uglifyjs staging/chaotive.app.js --compress --mangle --output js/bin/chaotive.app.min.js
 
-#for node.js based testing, deprecated:
-npm install -g mocha
-npm install chai
+call coffee --join staging/chaotive.util.js --compile modules/CHAOTIVE/UTIL
+call uglifyjs staging/chaotive.util.js --compress --mangle --output js/bin/chaotive.util.min.js
 
-#COMMANDS
-
-#build:
-coffee --join staging/chaotive.app.js --compile modules/CHAOTIVE/APP
-uglifyjs staging/chaotive.app.js --compress --mangle --output js/bin/chaotive.app.min.js
-
-coffee --join staging/l3.demonsedge.js --compile modules/L3/DEMONSEDGE
-uglifyjs staging/l3.demonsedge.js --compress --mangle --output js/bin/l3.demonsedge.min.js
-
-#test, deprecated:
-mocha --compilers coffee:coffee-script/register --recursive
+call coffee --join staging/l3.demonsedge.js --compile modules/L3/DEMONSEDGE
+call uglifyjs staging/l3.demonsedge.js --compress --mangle --output js/bin/l3.demonsedge.min.js
