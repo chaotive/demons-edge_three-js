@@ -53,6 +53,8 @@
 <script src="modules/L3/DEMONSEDGE/CHARACTERS/Player.coffee" type="text/coffeescript"></script>
 <script src="modules/L3/DEMONSEDGE/CHARACTERS/Enemy.coffee" type="text/coffeescript"></script>
 
+<script src="modules/L3/DEMONSEDGE/HUD/Hud.coffee" type="text/coffeescript"></script>
+
 <script src="modules/L3/DEMONSEDGE/DemonsEdge.coffee" type="text/coffeescript"></script>
 
 <script src="js/main.js"></script>
@@ -65,7 +67,10 @@
         <button onclick="game()">Play</button>
         <button onclick="fullscreen();game()">Play (Fullscreen)</button>
     </div>
-    <div id="game"></div>
+    <div id="game">
+        <canvas id="game-scene"></canvas>
+        <!--<canvas id="game-hud"></canvas>-->
+    </div>
 </div>
 
 <div id="controls"><h1>Controls</h1>

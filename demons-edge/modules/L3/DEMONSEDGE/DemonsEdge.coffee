@@ -2,6 +2,7 @@ class L3.DEMONSEDGE.DemonsEdge
 
   constructor: () ->
     console.log("Welcome to DemonsEdge")
+
     loadJSON("resources/config/dev/test.json", ["config"], @preload)
 
   preload: () =>
@@ -21,12 +22,11 @@ class L3.DEMONSEDGE.DemonsEdge
 
   createConfig: (config) ->
     RDG.Dungeon.Generate()
-    rooms = RDG.Dungeon.rooms.map (r) -> {r: r.x, c: r.y, rows: r.w, cols: r.h}
-    config.map.rooms = rooms
+    config.map.rooms = RDG.Dungeon.rooms.map (r) -> {r: r.x, c: r.y, rows: r.w, cols: r.h}
     @config = config
 
   createEnvironment: () ->
-    @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game')
+    @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game-scene')
     @map = new L3.DEMONSEDGE.MAP.Map(@)
     @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')
     @enemy = new L3.DEMONSEDGE.CHARACTERS.Enemy(@, 1, 2, 'enemy1')

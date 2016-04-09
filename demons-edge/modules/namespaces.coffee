@@ -11,6 +11,7 @@ top.L3 =
     GAME: {}
     MAP: {}
     CHARACTERS: {}
+    HUD: {}
     THREE: {
       SHAPES: {}
     }
