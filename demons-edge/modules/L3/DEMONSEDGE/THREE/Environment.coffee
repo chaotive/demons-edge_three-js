@@ -28,6 +28,9 @@ class L3.DEMONSEDGE.THREE.Environment
     #window behaviours listeners
     window.addEventListener( 'resize', @updateRendererSize, false )
 
+    #extra html directives needed to be applied
+    @applyExtraHtml()
+
   render: () ->
     requestAnimationFrame => @render()
     TWEEN.update()
@@ -36,9 +39,12 @@ class L3.DEMONSEDGE.THREE.Environment
   updateRendererSize: () =>
     @size =
       width: @parent.offsetWidth-150
-      height: @parent.offsetHeight-50
+      #height: @parent.offsetHeight-50
+      height: 430
     #@camera.aspect = window.innerWidth / window.innerHeight
     @camera.aspect = @size.width / @size.height
     @camera.updateProjectionMatrix()
     @renderer.setSize( @size.width, @size.height )
 
+  applyExtraHtml: () ->
+    @canvas.style.backgroundImage = "url('resources/img/dev/background.png')";

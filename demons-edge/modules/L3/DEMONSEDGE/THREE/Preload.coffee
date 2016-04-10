@@ -1,21 +1,21 @@
 class L3.DEMONSEDGE.THREE.Preload
 
-  constructor: (loadCb) ->
+  constructor: (cb) ->
+    @ress = {}
     @manager = new THREE.LoadingManager()
-    @manager.onLoad = loadCb
+    @manager.onLoad = cb
+    @loader = new THREE.TextureLoader(@manager);
 
-    @textureLoader = new THREE.TextureLoader(@manager);
+  load: (ress, group) ->
+    for id, url of ress
+      console.log(id + " ...")
+      @loadResource(id , url, group)
 
-  loadTextures: (textureImgs) ->
-    for textureId, imgUrl of textureImgs
-      console.log(textureId + " ...")
-      @loadTexture(textureId, imgUrl)
-
-  loadTexture: (textureId, imgUrl) ->
-    L3.DEMONSEDGE.THREE.textures = {}
-    @textureLoader.load(
-      imgUrl,
-      (texture) ->
-        console.log("... " + imgUrl)
-        L3.DEMONSEDGE.THREE.textures[textureId] = texture
+  loadResource: (id, url, group) ->
+    @ress[group] = {}
+    @loader.load(
+      url,
+      (res) =>
+        console.log("... " + url)
+        @ress[group][id] = res
     )

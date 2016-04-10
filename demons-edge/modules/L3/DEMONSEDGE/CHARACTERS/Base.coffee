@@ -1,18 +1,18 @@
 class L3.DEMONSEDGE.CHARACTERS.Base
 
-  constructor: (@de, @row, @col, id) ->
-    @sprite = @addSprite(@de.map, @row, @col, id)
-    @de.env.scene.add( @sprite )
+  constructor: (@g, @row, @col, id) ->
+    @sprite = @addSprite(@g, @row, @col, id)
+    @g.env.scene.add( @sprite )
     @moving = new L3.DEMONSEDGE.GAME.Move(@)
     @actionsPerTurn = 1
     @actions = @actionsPerTurn
     @speed = 1 #number of cells to move, always use an Int!
 
-  addSprite: (m, row, col, id) ->
-    sprite = new L3.DEMONSEDGE.THREE.Sprite(id)
-    sprite.position.setX(col * m.cell.width)
-    sprite.position.setY(row * m.cell.height)
-    sprite.position.setZ(m.cell.depth)
+  addSprite: (g, row, col, id) ->
+    sprite = new L3.DEMONSEDGE.THREE.Sprite(g.ress.textures[id])
+    sprite.position.setX(col * g.map.cell.width)
+    sprite.position.setY(row * g.map.cell.height)
+    sprite.position.setZ(g.map.cell.depth)
 
     return sprite
 

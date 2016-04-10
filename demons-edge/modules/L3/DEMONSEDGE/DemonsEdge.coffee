@@ -2,17 +2,21 @@ class L3.DEMONSEDGE.DemonsEdge
 
   constructor: () ->
     console.log("Welcome to DemonsEdge")
-
     loadJSON("resources/config/dev/test.json", ["config"], @preload)
 
   preload: () =>
     console.log("Preloading ...")
-    @preloader = new L3.DEMONSEDGE.THREE.Preload( => console.log("... preload finished!"); @create() )
+    preloader = new L3.DEMONSEDGE.THREE.Preload( => console.log("... preload finished!"); @create() )
+    @ress = preloader.ress
 
-    textureImgs =
+    preloader.load({
       'sample1': 'resources/img/dev/sample1.png'
       'enemy1': 'resources/img/dev/enemy1.png'
-    @preloader.loadTextures(textureImgs)
+    }, "textures")
+    preloader.load({
+      'background': 'resources/img/dev/background.png'
+      'arrow': 'resources/img/dev/hud/key-board-arrow-border.png'
+    }, "imgs")
 
   create: () =>
     @createConfig(config)
@@ -26,6 +30,7 @@ class L3.DEMONSEDGE.DemonsEdge
     @config = config
 
   createEnvironment: () ->
+    @hud = new L3.DEMONSEDGE.HUD.Hud(@g, 100, 430, {view: document.getElementById("game-hud")})
     @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game-scene')
     @map = new L3.DEMONSEDGE.MAP.Map(@)
     @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')

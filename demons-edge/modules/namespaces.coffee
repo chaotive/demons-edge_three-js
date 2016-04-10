@@ -8,10 +8,13 @@ top.CHAOTIVE =
 
 top.L3 =
   DEMONSEDGE:
-    GAME: {}
-    MAP: {}
     CHARACTERS: {}
-    HUD: {}
+    GAME: {}
+    GUI: {}
+    HUD:
+      BUTTONS: {}
+    MAP: {}
+    PIXI: {}
     THREE: {
       SHAPES: {}
     }

@@ -1,0 +1,1 @@
+add to preload: background, arrow img
