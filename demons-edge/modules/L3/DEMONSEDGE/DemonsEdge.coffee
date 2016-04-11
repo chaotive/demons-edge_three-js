@@ -5,8 +5,8 @@ class L3.DEMONSEDGE.DemonsEdge
     loadJSON("resources/config/dev/test.json", ["config"], @preload)
 
   preload: () =>
-    console.log("Preloading ...")
-    preloader = new L3.DEMONSEDGE.THREE.Preload( => console.log("... preload finished!"); @create() )
+    console.log("Preloading three.js...")
+    preloader = new L3.DEMONSEDGE.THREE.Preload( => console.log("... preload finished!"); @preloadPixi() )
     @ress = preloader.ress
 
     preloader.load({
@@ -15,8 +15,18 @@ class L3.DEMONSEDGE.DemonsEdge
     }, "textures")
     preloader.load({
       'background': 'resources/img/dev/background.png'
-      'arrow': 'resources/img/dev/hud/key-board-arrow-border.png'
     }, "imgs")
+
+  preloadPixi: () =>
+    console.log("Preloading pixi.js...")
+    loader = PIXI.loader
+    imgs =
+      'arrow': 'resources/img/dev/hud/key-board-arrow-border.png'
+    for id, url of imgs
+      console.log(id)
+      loader.add(id, url)
+    loader.once('complete',  => console.log("... preload finished!"); @create() )
+    loader.load()
 
   create: () =>
     @createConfig(config)
@@ -30,7 +40,7 @@ class L3.DEMONSEDGE.DemonsEdge
     @config = config
 
   createEnvironment: () ->
-    @hud = new L3.DEMONSEDGE.HUD.Hud(@g, 100, 430, {view: document.getElementById("game-hud")})
+    @hud = new L3.DEMONSEDGE.HUD.Hud(@, 100, 430, {view: document.getElementById("game-hud")})
     @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game-scene')
     @map = new L3.DEMONSEDGE.MAP.Map(@)
     @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')

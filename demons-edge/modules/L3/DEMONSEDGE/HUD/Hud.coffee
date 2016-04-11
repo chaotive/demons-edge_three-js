@@ -6,16 +6,16 @@ class L3.DEMONSEDGE.HUD.Hud
     @renderer.autoResize = true
     @stage = new PIXI.Container()
 
-    @createButtons()
+    @create()
     @animate()
 
-  createButtons: () ->
+  create: () ->
     @arrows =
-      left: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@stage, 0, 0, "left")
-      right: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@stage, 0, 0, "right")
-      top: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@stage, 0, 0, "top")
-      down: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@stage, 0, 0, "down")
-    @endTurn = new L3.DEMONSEDGE.HUD.BUTTONS.EndTurn(@stage, 0, 0)
+      left: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@, 0, 0, "left")
+      right: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@, 0, 0, "right")
+      top: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@, 0, 0, "top")
+      down: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@, 0, 0, "down")
+    @endTurn = new L3.DEMONSEDGE.HUD.BUTTONS.EndTurn(@, 0, 0)
 
   animate: () =>
     requestAnimationFrame(@animate)

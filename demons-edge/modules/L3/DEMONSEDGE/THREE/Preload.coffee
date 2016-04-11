@@ -1,7 +1,7 @@
 class L3.DEMONSEDGE.THREE.Preload
 
   constructor: (cb) ->
-    @ress = {}
+    THREE.loader = {}
     @manager = new THREE.LoadingManager()
     @manager.onLoad = cb
     @loader = new THREE.TextureLoader(@manager);
@@ -12,10 +12,10 @@ class L3.DEMONSEDGE.THREE.Preload
       @loadResource(id , url, group)
 
   loadResource: (id, url, group) ->
-    @ress[group] = {}
+    THREE.loader[group] = {}
     @loader.load(
       url,
       (res) =>
         console.log("... " + url)
-        @ress[group][id] = res
+        THREE.loader[group][id] = res
     )

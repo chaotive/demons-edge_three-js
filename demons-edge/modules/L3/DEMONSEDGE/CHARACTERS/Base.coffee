@@ -9,7 +9,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
     @speed = 1 #number of cells to move, always use an Int!
 
   addSprite: (g, row, col, id) ->
-    sprite = new L3.DEMONSEDGE.THREE.Sprite(g.ress.textures[id])
+    sprite = new L3.DEMONSEDGE.THREE.Sprite(id)
     sprite.position.setX(col * g.map.cell.width)
     sprite.position.setY(row * g.map.cell.height)
     sprite.position.setZ(g.map.cell.depth)

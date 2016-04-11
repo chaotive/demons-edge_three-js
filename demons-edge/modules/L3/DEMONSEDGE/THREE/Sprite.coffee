@@ -1,7 +1,6 @@
-class L3.DEMONSEDGE.THREE.Sprite
+class L3.DEMONSEDGE.THREE.Sprite extends THREE.Sprite
 
-  constructor: (texture) ->
+  constructor: (textureId) ->
+    texture = THREE.loader.textures[textureId]
     material = new THREE.SpriteMaterial( { map: texture, color: 0xffffff, fog: true } )
-    sprite = new THREE.Sprite( material )
-
-    return sprite
+    super( material )

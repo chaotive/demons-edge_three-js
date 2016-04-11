@@ -1,1 +1,2 @@
-class L3.DEMONSEDGE.HUD.BUTTONS.Button
+class L3.DEMONSEDGE.GUI.Button
+
