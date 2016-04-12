@@ -22,6 +22,7 @@ class L3.DEMONSEDGE.DemonsEdge
     loader = PIXI.loader
     imgs =
       'arrow': 'resources/img/dev/hud/key-board-arrow-border.png'
+      'endTurn': 'resources/img/dev/hud/end-turn.png'
       'character': 'resources/img/dev/sample1.png'
     for id, url of imgs
       console.log(id)

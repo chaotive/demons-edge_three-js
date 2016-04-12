@@ -13,7 +13,4 @@ class L3.DEMONSEDGE.PIXI.Sprite extends PIXI.Sprite
       when "left" then 4.71
       else 0
 
-  center: (otherWidth) ->
-    console.log(otherWidth)
-    console.log(@width)
-    @position.x = (otherWidth - @width) / 2
+  center: (otherWidth) -> @position.x = (otherWidth - @width) / 2

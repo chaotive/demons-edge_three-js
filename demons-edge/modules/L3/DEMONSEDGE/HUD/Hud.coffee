@@ -1,7 +1,8 @@
 class L3.DEMONSEDGE.HUD.Hud
 
   constructor: (@g, w, h, options = {}) ->
-    options.backgroundColor = 0x1099bb
+    # options.backgroundColor = 0x1099bb
+    options.transparent = true
     @renderer = new PIXI.CanvasRenderer(w, h, options)
     @renderer.autoResize = true
     @stage = new PIXI.Container()
@@ -10,8 +11,16 @@ class L3.DEMONSEDGE.HUD.Hud
     @animate()
 
   create: () ->
+    # draw a rounded rectangle
+    @graphics = new PIXI.Graphics()
+    @graphics.lineStyle(1, 0xFF0000, 1)
+    @graphics.beginFill(0x3B0B0B, 0.25)
+    @graphics.drawRoundedRect(0, 0, @renderer.width, @renderer.height, 5)
+    @graphics.endFill()
+    @stage.addChild(@graphics)
+
     @character = new L3.DEMONSEDGE.HUD.Character(@stage, 12.5, 0)
-    @endTurn = new L3.DEMONSEDGE.HUD.BUTTONS.EndTurn(@, 0, 0)
+    @endTurn = new L3.DEMONSEDGE.HUD.BUTTONS.EndTurn(@stage, 5, 370)
 
   animate: () =>
     requestAnimationFrame(@animate)
@@ -35,5 +44,12 @@ class L3.DEMONSEDGE.HUD.Character
       left: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 0, @picture.height + 25, "left")
       down: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 25, @picture.height + 25, "down")
       right: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 50, @picture.height + 25, "right")
+
+    @graphics = new PIXI.Graphics()
+    @graphics.lineStyle(1, 0xFF0000, 1);
+    @graphics.beginFill(0x3B0B0B, 0.25);
+    @graphics.drawRoundedRect(0, 0, @container.width, @container.height, 5);
+    @graphics.endFill();
+    @container.addChild(@graphics)
 
     @parent.addChild(@container)
