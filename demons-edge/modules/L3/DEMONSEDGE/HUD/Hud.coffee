@@ -40,7 +40,7 @@ class L3.DEMONSEDGE.HUD.Character
     @container.addChild(@picture)
 
     @arrows =
-      top: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 25, @picture.height + 0, "top")
+      up: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 25, @picture.height + 0, "up")
       left: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 0, @picture.height + 25, "left")
       down: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 25, @picture.height + 25, "down")
       right: new L3.DEMONSEDGE.HUD.BUTTONS.Arrow(@container, 50, @picture.height + 25, "right")

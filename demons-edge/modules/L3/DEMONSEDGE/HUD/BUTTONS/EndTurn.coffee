@@ -7,4 +7,10 @@ class L3.DEMONSEDGE.HUD.BUTTONS.EndTurn extends L3.DEMONSEDGE.GUI.Button
     @sprite.position.x = x
     @sprite.position.y = y
 
+    @sprite.interactive = true;
+    @sprite.on('mousedown', () => @action())
+    @sprite.on('touchstart', () => @action())
+
     @parent.addChild(@sprite)
+
+  action: () -> L3.de.turns.advance()

@@ -11,7 +11,7 @@ class L3.DEMONSEDGE.GAME.Turn
     else console.warn("Still moving!")
 
   moveEnemies: () ->
-    random = CHAOTIVE.UTIL.Random
+    random = CHAOTIVE.UTIL.Random    
     @de.enemy.moveRel(random.number(1,-1),random.number(1,-1))
 
   newTurn: () ->

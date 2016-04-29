@@ -3,6 +3,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
   constructor: (@g, @row, @col, id) ->
     @sprite = @addSprite(@g, @row, @col, id)
     @g.env.scene.add( @sprite )
+    console.log(@)
     @moving = new L3.DEMONSEDGE.GAME.Move(@)
     @actionsPerTurn = 1
     @actions = @actionsPerTurn
@@ -27,7 +28,7 @@ class L3.DEMONSEDGE.CHARACTERS.Base
       @col = col
       @actions--
       position = { x : @sprite.position.x, y: @sprite.position.y }
-      target = { x : @de.map.getX(col), y: @de.map.getY(row) }
+      target = { x : @g.map.getX(col), y: @g.map.getY(row) }
       tween = new TWEEN.Tween(position).to(target, 500)
       tween.onUpdate(() =>
         @sprite.position.x = position.x

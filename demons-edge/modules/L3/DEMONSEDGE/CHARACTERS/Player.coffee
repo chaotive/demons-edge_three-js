@@ -1,7 +1,7 @@
 class L3.DEMONSEDGE.CHARACTERS.Player extends L3.DEMONSEDGE.CHARACTERS.Base
 
-  constructor: (@de, @row, @col, id) ->
-    super(@de, @row, @col, id)
+  constructor: (@g, @row, @col, id) ->
+    super(@g, @row, @col, id)
     @actionsPerTurn = 2
     @actions = @actionsPerTurn
     @speed = 2

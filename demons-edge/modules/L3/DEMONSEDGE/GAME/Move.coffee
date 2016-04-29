@@ -1,12 +1,12 @@
 class L3.DEMONSEDGE.GAME.Move
   
   constructor: (@obj) ->
-    @de = @obj.de
+    @g = @obj.g
     @state = false
     
   set: (@state) ->
-    if @state then @de.moving.add @
-    else @de.moving.remove @
+    if @state then @g.moving.add @
+    else @g.moving.remove @
 
   is: -> @state
 
