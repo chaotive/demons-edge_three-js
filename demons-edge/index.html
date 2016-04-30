@@ -11,8 +11,6 @@
 <script src="js/lib/jquery-1.10.2.min.js"></script>
 <script src="js/lib/coffee-script.js"></script>
 
-<script src="js/lib/RandomDungeonGenerator-2.js"></script>
-
 <script src="js/lib/three/three-72.js"></script>
 <script src="js/lib/three/stats-14.min.js"></script>
 <script src="js/lib/three/loaders/DDSLoader.js"></script>
@@ -25,6 +23,9 @@
 <script src="js/lib/three/Detector.js"></script>
 
 <script src="js/lib/Tween-16.3.4.js"></script>
+<script src="js/lib/pixi-3.0.11.js"></script>
+
+<script src="js/lib/RandomDungeonGenerator-2.js"></script>
 
 <script src="js/bin/namespaces.min.js"></script>
 
@@ -36,13 +37,20 @@
 
 <body onload="init()">
 
+<div id="title">
+    <h1>Demon's Edge</h1>
+</div>
+
 <div id="main">
     <div id="loading">Loading...</div>
     <div id="play">
         <button onclick="game()">Play</button>
         <button onclick="fullscreen();game()">Play (Fullscreen)</button>
     </div>
-    <div id="game"></div>
+    <div id="game">
+        <canvas id="game-scene"></canvas>
+        <canvas id="game-hud"></canvas>
+    </div>
 </div>
 
 <div id="controls"><h1>Controls</h1>
