@@ -7,29 +7,21 @@ class L3.DEMONSEDGE.THREE.Environment
   init: (renderAlpha, canvasId) ->
     @canvas = document.getElementById(canvasId);
     @parent = @canvas.parentNode.parentNode
+    @renderer = new THREE.WebGLRenderer( { canvas: @canvas, alpha: renderAlpha, antialiasing: true } )
     @scene = new L3.DEMONSEDGE.THREE.Scene()
-    @camera = new L3.DEMONSEDGE.THREE.Camera()
+
+    @camera = new L3.DEMONSEDGE.THREE.Camera(@renderer)
+    @scene.add( @camera )
 
     # lights
     ambient = new THREE.AmbientLight( 0x444444 );
     @scene.add( ambient );
-    pointLight = new THREE.PointLight( 0xffffff, 1, 100 )
-    @scene.add( @camera )
-    @camera.add(pointLight)
 
-    #renderer
-    @renderer = new THREE.WebGLRenderer( { canvas: @canvas, alpha: renderAlpha, antialiasing: true } )
-    #@renderer.setPixelRatio( window.devicePixelRatio )
     @updateRendererSize()
-
-    @controls = new L3.DEMONSEDGE.THREE.Controls(@camera, @renderer.domElement)
-    #@controls.enabled = false
+    @applyExtraHtml()
 
     #window behaviours listeners
     window.addEventListener( 'resize', @updateRendererSize, false )
-
-    #extra html directives needed to be applied
-    @applyExtraHtml()
 
   render: () ->
     requestAnimationFrame => @render()
@@ -41,7 +33,6 @@ class L3.DEMONSEDGE.THREE.Environment
       width: @parent.offsetWidth-150
       #height: @parent.offsetHeight-50
       height: 430
-    #@camera.aspect = window.innerWidth / window.innerHeight
     @camera.aspect = @size.width / @size.height
     @camera.updateProjectionMatrix()
     @renderer.setSize( @size.width, @size.height )
