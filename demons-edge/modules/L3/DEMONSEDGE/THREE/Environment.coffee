@@ -7,17 +7,19 @@ class L3.DEMONSEDGE.THREE.Environment
   init: (renderAlpha, canvasId) ->
     @canvas = document.getElementById(canvasId);
     @parent = @canvas.parentNode.parentNode
-    @renderer = new THREE.WebGLRenderer( { canvas: @canvas, alpha: renderAlpha, antialiasing: true } )
     @scene = new L3.DEMONSEDGE.THREE.Scene()
 
-    @camera = new L3.DEMONSEDGE.THREE.Camera(@renderer)
+    @renderer = new THREE.WebGLRenderer( { canvas: @canvas, alpha: renderAlpha, antialiasing: true } )
+    #@camera = new L3.DEMONSEDGE.THREE.ControlCamera(@renderer, 0, -45, 45, 2)
+    @camera = new L3.DEMONSEDGE.THREE.SimpleCamera()
     @scene.add( @camera )
+
+    @updateRendererSize()
 
     # lights
     ambient = new THREE.AmbientLight( 0x444444 );
     @scene.add( ambient );
 
-    @updateRendererSize()
     @applyExtraHtml()
 
     #window behaviours listeners

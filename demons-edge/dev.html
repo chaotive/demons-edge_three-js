@@ -85,6 +85,18 @@
 </div>
 
 <div id="controls"><h1>Controls</h1>
+    <div id="controls-camera" class="left2"><h2>Player</h2>
+        <div>Position:
+            <button onclick="L3.de.player.moveRel(0,-1)">Left</button>
+            <button onclick="L3.de.player.moveRel(0,1)">Right</button>
+            <button onclick="L3.de.player.moveRel(1,0)">Up</button>
+        </div>
+        <div>Rotation:
+            <button onclick="L3.de.player.moveRel(-1,0)">Down</button>
+            <button onclick="L3.de.player.move(1,1)">Move</button>
+            <button onclick="L3.de.player.moveRel(1,1)">MoveRel</button>
+        </div>
+    </div>
     <div id="controls-player" class="left2"><h2>Player</h2>
         <div>Move:
             <button onclick="L3.de.player.moveRel(0,-1)">Left</button>

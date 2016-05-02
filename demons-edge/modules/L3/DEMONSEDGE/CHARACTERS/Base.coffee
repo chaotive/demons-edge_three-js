@@ -3,7 +3,6 @@ class L3.DEMONSEDGE.CHARACTERS.Base
   constructor: (@g, @row, @col, id) ->
     @sprite = @addSprite(@g, @row, @col, id)
     @g.env.scene.add( @sprite )
-    console.log(@)
     @moving = new L3.DEMONSEDGE.GAME.Move(@)
     @actionsPerTurn = 1
     @actions = @actionsPerTurn
