@@ -85,18 +85,29 @@
 </div>
 
 <div id="controls"><h1>Controls</h1>
-    <div id="controls-camera" class="left2"><h2>Player</h2>
-        <div>Position:
-            <button onclick="L3.de.player.moveRel(0,-1)">Left</button>
-            <button onclick="L3.de.player.moveRel(0,1)">Right</button>
-            <button onclick="L3.de.player.moveRel(1,0)">Up</button>
+    <div id="controls-camera"><h2>Camera</h2>
+        <div class="left2">
+            <div>Position: <span id="position-debug"></span></div>
+            <button onclick="L3.de.env.camera.updatePosition('x',-1)">-x</button>
+            <button onclick="L3.de.env.camera.updatePosition('x',1)">+x</button>
+            <button onclick="L3.de.env.camera.updatePosition('y',-1)">-y</button>
+            <button onclick="L3.de.env.camera.updatePosition('y',1)">+y</button>
+            <button onclick="L3.de.env.camera.updatePosition('z',-1)">-z</button>
+            <button onclick="L3.de.env.camera.updatePosition('z',1)">+z</button>
         </div>
-        <div>Rotation:
-            <button onclick="L3.de.player.moveRel(-1,0)">Down</button>
-            <button onclick="L3.de.player.move(1,1)">Move</button>
-            <button onclick="L3.de.player.moveRel(1,1)">MoveRel</button>
+        <div class="right2">
+            <div>Rotation: <span id="rotation-debug"></span></div>
+            <button onclick="L3.de.env.camera.updateRotation('x',-1)">-x</button>
+            <button onclick="L3.de.env.camera.updateRotation('x',1)">+x</button>
+            <button onclick="L3.de.env.camera.updateRotation('y',-1)">-y</button>
+            <button onclick="L3.de.env.camera.updateRotation('y',1)">+y</button>
+            <button onclick="L3.de.env.camera.updateRotation('z',-1)">-z</button>
+            <button onclick="L3.de.env.camera.updateRotation('z',1)">+z</button>
         </div>
     </div>
+</div>
+
+<div id="hidden-controls">
     <div id="controls-player" class="left2"><h2>Player</h2>
         <div>Move:
             <button onclick="L3.de.player.moveRel(0,-1)">Left</button>

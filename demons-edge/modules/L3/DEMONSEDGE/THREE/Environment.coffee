@@ -8,10 +8,11 @@ class L3.DEMONSEDGE.THREE.Environment
     @canvas = document.getElementById(canvasId);
     @parent = @canvas.parentNode.parentNode
     @scene = new L3.DEMONSEDGE.THREE.Scene()
-
     @renderer = new THREE.WebGLRenderer( { canvas: @canvas, alpha: renderAlpha, antialiasing: true } )
+
+    @setSize()
     #@camera = new L3.DEMONSEDGE.THREE.ControlCamera(@renderer, 0, -45, 45, 2)
-    @camera = new L3.DEMONSEDGE.THREE.SimpleCamera()
+    @camera = new L3.DEMONSEDGE.THREE.SimpleCamera(@size.width, @size.height)
     @scene.add( @camera )
 
     @updateRendererSize()
@@ -30,12 +31,15 @@ class L3.DEMONSEDGE.THREE.Environment
     TWEEN.update()
     @renderer.render( @scene, @camera )
 
-  updateRendererSize: () =>
+  setSize: () ->
     @size =
-      width: @parent.offsetWidth-150
-      #height: @parent.offsetHeight-50
+      width: @parent.offsetWidth - 150
+      #height: @parent.offsetHeight - 50
       height: 430
-    @camera.aspect = @size.width / @size.height
+
+  updateRendererSize: () =>
+    @setSize()
+    @camera.updateAspect(@size.width, @size.height)
     @camera.updateProjectionMatrix()
     @renderer.setSize( @size.width, @size.height )
 
