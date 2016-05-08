@@ -86,7 +86,7 @@
 
 <div id="controls"><h1>Controls</h1>
     <div id="controls-camera"><h2>Camera</h2>
-        <div class="left2">
+        <div class="left3">
             <div>Position: <span id="position-debug"></span></div>
             <button onclick="L3.de.env.camera.updatePosition('x',-1)">-x</button>
             <button onclick="L3.de.env.camera.updatePosition('x',1)">+x</button>
@@ -95,7 +95,7 @@
             <button onclick="L3.de.env.camera.updatePosition('z',-1)">-z</button>
             <button onclick="L3.de.env.camera.updatePosition('z',1)">+z</button>
         </div>
-        <div class="right2">
+        <div class="center3">
             <div>Rotation: <span id="rotation-debug"></span></div>
             <button onclick="L3.de.env.camera.updateRotation('x',-1)">-x</button>
             <button onclick="L3.de.env.camera.updateRotation('x',1)">+x</button>
@@ -103,6 +103,11 @@
             <button onclick="L3.de.env.camera.updateRotation('y',1)">+y</button>
             <button onclick="L3.de.env.camera.updateRotation('z',-1)">-z</button>
             <button onclick="L3.de.env.camera.updateRotation('z',1)">+z</button>
+        </div>
+        <div class="right3">
+            <div>Zoom: <span id="zoom-debug"></span></div>
+            <button onclick="L3.de.env.camera.updateZoom(-1)">-x</button>
+            <button onclick="L3.de.env.camera.updateZoom(1)">+x</button>
         </div>
     </div>
 </div>

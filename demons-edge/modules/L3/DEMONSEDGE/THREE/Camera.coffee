@@ -25,9 +25,16 @@ class L3.DEMONSEDGE.THREE.SimpleCamera extends THREE.OrthographicCamera
       @position.x + " " + @position.y + " " + @position.z)
 
   updateRotation: (axis, q) ->
+    pf = (n) -> n.toString().substring(0,5)
     @rotation[axis] += q/20
     $("#rotation-debug").text(
-      @rotation.x + " " + @rotation.y + " " + @rotation.z)
+      pf(@rotation.x) + " " + pf(@rotation.y) + " " + pf(@rotation.z))
+
+  updateZoom: (q) ->
+    pf = (n) -> n.toString().substring(0,3)
+    @zoom += q/10
+    $("#zoom-debug").text(pf(@zoom))
+    @updateProjectionMatrix()
 
 class L3.DEMONSEDGE.THREE.ControlCamera extends THREE.PerspectiveCamera
 
