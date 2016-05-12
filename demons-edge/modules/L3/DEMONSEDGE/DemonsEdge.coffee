@@ -12,6 +12,7 @@ class L3.DEMONSEDGE.DemonsEdge
     preloader.load({
       'sample1': 'resources/img/dev/sample1.png'
       'enemy1': 'resources/img/dev/enemy1.png'
+      'char1': 'resources/anim/char1/idle.png'
     }, "textures")
     preloader.load({
       'background': 'resources/img/dev/background.png'
@@ -45,7 +46,8 @@ class L3.DEMONSEDGE.DemonsEdge
     @hud = new L3.DEMONSEDGE.HUD.Hud(@, 100, 430, {view: document.getElementById("game-hud")})
     @env = new L3.DEMONSEDGE.THREE.Environment(true, 'game-scene')
     @map = new L3.DEMONSEDGE.MAP.Map(@)
-    @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')
+    #@player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'sample1')
+    @player = new L3.DEMONSEDGE.CHARACTERS.Player(@, 0, 0, 'char1')
     @enemy = new L3.DEMONSEDGE.CHARACTERS.Enemy(@, 1, 2, 'enemy1')
     @createGroups()
 

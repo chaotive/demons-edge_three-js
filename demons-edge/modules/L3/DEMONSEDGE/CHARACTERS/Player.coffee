@@ -16,3 +16,6 @@ class L3.DEMONSEDGE.CHARACTERS.Player extends L3.DEMONSEDGE.CHARACTERS.Base
 #    @de.game.debug.geom(r, 'rgba(200,0,0,0.5)')
 #    console.log(r)
 #    @sprite.addChild(@de.game.make.sprite(r))
+
+  animIdle: () ->
+    #resources/anim/char1/idle.png 175 x 283 (22)
