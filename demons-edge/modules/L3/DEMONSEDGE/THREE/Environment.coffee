@@ -12,7 +12,7 @@ class L3.DEMONSEDGE.THREE.Environment
 
     @setSize()
     #@camera = new L3.DEMONSEDGE.THREE.ControlCamera(@renderer, 0, -45, 45, 2)
-    @camera = new L3.DEMONSEDGE.THREE.SimpleCamera(@size.width, @size.height)
+    @camera = new L3.DEMONSEDGE.THREE.SimpleCamera(@renderer, @size.width, @size.height)
     @scene.add( @camera )
 
     @updateRendererSize()

@@ -1,7 +1,11 @@
 class L3.DEMONSEDGE.THREE.SimpleCamera extends THREE.OrthographicCamera
 
-  constructor: (x, y, z, cameraOptions = {}) ->
+  constructor: (@renderer, x, y, z, cameraOptions = {}) ->
     super()
+
+    @controls = new L3.DEMONSEDGE.THREE.Controls(@, @renderer.domElement)
+    @controls.enabled = true
+
     @position.x = 10 #-20
     @position.y = 9 #-20
     @position.z = -12
@@ -10,7 +14,7 @@ class L3.DEMONSEDGE.THREE.SimpleCamera extends THREE.OrthographicCamera
     @rotation.x = 1.25
     @rotation.y = 0.7
     @rotation.z = 0.2
-    
+
   updateAspect: (width, height) ->
     @left = width / -40
     @right = width / 40
